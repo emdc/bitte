@@ -23,7 +23,6 @@
         localeName = arguments[0]
         translation = arguments[1]
         if (typeof localeName !== 'string') throw new Error('Incorrect locale name')
-        if (typeof translation !== 'object') throw new Error('Incorrect translation object')
         this._get[localeName] = translation || {}
       }
     } else if (arguments.length === 2) {
@@ -38,7 +37,7 @@
       var localesList = Object.keys(this._get)
       if (localesList.length) {
         this._currentLocale = localesList[0]
-      } 
+      }
     }
 
     return this

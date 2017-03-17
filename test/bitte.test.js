@@ -145,60 +145,60 @@ describe('Bitte package', function () {
 
     it('Error when no property in trnaslation', function () {
       var bitte = new Bitte().add('en-US', { key: 'value' })
-      var exceptionFound = false
+      var exceptionWasFound = false
       try {
         var value = bitte.get('prop')
       } catch (e) {
-        exceptionFound = true
+        exceptionWasFound = true
       }
-      assert.ok(exceptionFound)
+      assert.ok(exceptionWasFound)
     })
 
     it('Error when no default translation', function () {
       var bitte = new Bitte()
-      var exceptionFound = false
+      var exceptionWasFound = false
       try {
         var value = bitte.get('prop')
       } catch (e) {
-        exceptionFound = true
+        exceptionWasFound = true
       }
-      assert.ok(exceptionFound)
+      assert.ok(exceptionWasFound)
     })
 
     it('Error when no translation', function () {
       var bitte = new Bitte().add('en-US', { key: 'value' })
-      var exceptionFound = false
+      var exceptionWasFound = false
 
       try {
         var value = bitte.get('prop', 'ru-RU')
       } catch (e) {
-        exceptionFound = true
+        exceptionWasFound = true
       }
-      assert.ok(exceptionFound)
+      assert.ok(exceptionWasFound)
     })
   })
 
   describe('Add new translation', function() {
     it('Add incorrect translation gives error', function () {
       var bitte = new Bitte()
-      var exceptionFound = false
+      var exceptionWasFound = false
       try {
         bitte.add('en-US', 'value')
       } catch (e) {
-        exceptionFound = true
+        exceptionWasFound = true
       }
-      assert.ok(exceptionFound)
+      assert.ok(exceptionWasFound)
     })
 
     it('Add translation with inclorrect locale gives error', function () {
       var bitte = new Bitte()
-      var exceptionFound = false
+      var exceptionWasFound = false
       try {
         bitte.add('en-US', 'value')
       } catch (e) {
-        exceptionFound = true
+        exceptionWasFound = true
       }
-      assert.ok(exceptionFound)
+      assert.ok(exceptionWasFound)
     })
 
     it('Correctly add translations array', function () {
@@ -209,6 +209,37 @@ describe('Bitte package', function () {
     it('Add empty translation', function () {
       var bitte = new Bitte().add('en-US')
       assert.deepEqual({}, bitte._get['en-US'])
+    })
+
+    it('Add invalid locale name make error', function () {
+      var bitte = new Bitte()
+      var exceptionWasFound = false
+      try {
+        bitte.add(10)
+      } catch (e) {
+        exceptionWasFound = true
+      }
+      assert.ok(exceptionWasFound)
+    })
+
+    it('Add invalid translation data in array make error', function () {
+      var exceptionWasFound = false
+      try {
+        var bitte = new Bitte().add([ {locale: 'en-US', data: {}}, {locale: 'ru-RU', data: 15}])
+      } catch (e) {
+        exceptionWasFound = true
+      }
+      assert.ok(exceptionWasFound)
+    })
+
+    it('Add invalid translation data in array make error', function () {
+      var exceptionWasFound = false
+      try {
+        var bitte = new Bitte().add([ {locale: 'en-US', data: {}}, {locale: 23, data: {}}])
+      } catch (e) {
+        exceptionWasFound = true
+      }
+      assert.ok(exceptionWasFound)
     })
   })
 
@@ -237,6 +268,18 @@ describe('Bitte package', function () {
     it('Correct locales list', function () {
       var bitte = new Bitte().add([ {locale: 'en-US', data: {}}, {locale: 'ru-RU', data: {}}])
       assert.deepEqual(['en-US', 'ru-RU'], bitte.locales())
+    })
+
+    it('Set an unknown translation as current make error', function () {
+      var bitte = new Bitte().add([ {locale: 'en-US', data: {}}, {locale: 'ru-RU', data: {}}])
+      var exceptionWasFound = false
+
+      try {
+        bitte.currentLocale('de-DE')
+      } catch (e) {
+        exceptionWasFound = true
+      }
+      assert.ok(exceptionWasFound)
     })
   })
 
