@@ -3,7 +3,7 @@
 Simple client- and server-side JavaScript library
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](http://standardjs.com/)
-[![Travis CI]](https://travis-ci.org/emdc/bitte.svg?branch=master)
+[![Build Status](https://travis-ci.org/emdc/bitte.svg?branch=master)](https://travis-ci.org/emdc/bitte)
 
 ## Installation
 
