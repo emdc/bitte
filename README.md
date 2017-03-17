@@ -7,7 +7,7 @@ Simple client- and server-side JavaScript library
 
 ## Installation
 
-`npm i bitte`
+` $ npm i bitte --save`
 
 ## Features
 
