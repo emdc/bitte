@@ -1,0 +1,36 @@
+{
+  "name": "bitte",
+  "version": "0.2.0",
+  "description": "simple client-side and server-side localization library",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && mocha ./test",
+    "mocha": "mocha ./test",
+    "check": "standard"
+  },
+  "keywords": [
+    "localization",
+    "l10n",
+    "i18n"
+  ],
+  "author": {
+    "name": "Eduard Pikhno",
+    "email": "i@emdc.ru",
+    "url": "https://emdc.ru"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emdc/bitte.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "mocha": "^3.2.0",
+    "standard": "^9.0.1"
+  },
+  "standard": {
+    "ignore": [
+      "/test/"
+    ]
+  }
+}

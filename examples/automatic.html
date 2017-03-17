@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bitte — simple localization library</title>
+</head>
+<body>
+  <p>Localizable properties:
+    <ul>
+      <li><span id="property-1"></span></li>
+      <li><span id="property-2"></span></li>
+      <li><span id="property-3"></span></li>
+    </ul>
+  </p>
+
+<p>And in this plase some properties: <span id="property-4"></span> and <span id="property-5"></span></p>
+
+  <p>Change language:
+    <select id="select-language">
+      <option value="en-US">English</option>
+      <option value="de-DE">Deutsche</option>
+      <option value="ru-RU">Русский</option>
+    </select>
+  </p>
+
+  <script src="../index.js"></script>
+  <script>
+    (() => {
+      let bitte = new Bitte();
+      bitte.add(getTranslationExample());
+
+      bitte.link(document.getElementById('property-1'), 'propertyOne')
+      bitte.link(document.getElementById('property-2'), 'propertyTwo')
+      bitte.link(document.getElementById('property-3'), 'propertyThree')
+
+      bitte.link(document.getElementById('property-4'), 'propertyOne')
+      bitte.link(document.getElementById('property-5'), 'propertyTwo')
+
+      bitte.currentLocale('en-US')
+
+      let selectInput = document.getElementById('select-language')
+      selectInput.addEventListener('change', () => {
+        for (let i = 0; i < selectInput.options.length; ++i) {
+          if (selectInput.options[i].selected) {
+            bitte.currentLocale(selectInput.options[i].value)
+            break
+          }
+        }
+      }, true)
+
+      function getTranslationExample () {
+        return [
+          { 
+            locale: 'en-US', 
+            data: {
+              propertyOne: 'One',
+              propertyTwo: 'Two',
+              propertyThree: 'Bitte is the simple JavaScript library for client-side interface localizations'
+            }
+          },
+          {
+            locale: 'de-DE', 
+            data: {
+              propertyOne: 'Ein',
+              propertyTwo: 'Zwei',
+              propertyThree: 'Bitte ist die einfache JavaScript-Bibliothek für clientseitige Schnittstelle Lokalisierungen'
+            }
+          },
+          {
+            locale: 'ru-RU', 
+            data: {
+              propertyOne: 'Один',
+              propertyTwo: 'Два',
+              propertyThree: 'Bitte — это JavaScript библиотека для локализации интерфейсов на стороне клиента'
+            }
+          }
+        ]
+      }
+    })()
+  </script>
+</body>
+</html>
