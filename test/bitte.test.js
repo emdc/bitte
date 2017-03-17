@@ -205,6 +205,11 @@ describe('Bitte package', function () {
       var bitte = new Bitte().add([ {locale: 'en-US', data: {}}, {locale: 'ru-RU', data: {}}])
       assert.deepEqual(['en-US', 'ru-RU'], Object.keys(bitte._get))
     })
+
+    it('Add empty translation', function () {
+      var bitte = new Bitte().add('en-US')
+      assert.deepEqual({}, bitte._get['en-US'])
+    })
   })
 
   describe('Set current locale', function () {

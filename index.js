@@ -38,11 +38,10 @@
       var localesList = Object.keys(this._get)
       if (localesList.length) {
         this._currentLocale = localesList[0]
-      }
-      return this
-    } else {
-      return this
+      } 
     }
+
+    return this
   }
 
   Bitte.prototype.set = function (property, value, localeName) {
