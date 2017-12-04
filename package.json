@@ -12,7 +12,9 @@
   "keywords": [
     "localization",
     "l10n",
-    "i18n"
+    "i18n",
+    "react",
+    "SPA"
   ],
   "author": {
     "name": "Eduard Pikhno",
@@ -24,16 +26,15 @@
     "url": "git+https://github.com/emdc/bitte.git"
   },
   "license": "MIT",
-  "devDependencies": {
-    "assert": "^1.4.1",
-    "coveralls": "^2.12.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.2.0",
-    "standard": "^9.0.1"
+  "dependencies": {
+    "classnames": "^2.2.5"
   },
-  "standard": {
-    "ignore": [
-      "/test/"
-    ]
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "prop-types": "^15.6.0"
+  },
+  "devDependencies": {
+    "coveralls": "^2.12.0"
   }
 }
